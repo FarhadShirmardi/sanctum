@@ -157,6 +157,7 @@ class GuardTest extends TestCase
             'expires_at' => now()->addMinutes(60),
         ]);
 
+        $this->withoutDefer();
         $returnedUser = $guard->__invoke($request);
 
         $this->assertEquals($user->id, $returnedUser->id);
@@ -187,6 +188,7 @@ class GuardTest extends TestCase
             'name' => 'Test',
         ]);
 
+        $this->withoutDefer();
         $returnedUser = $guard->__invoke($request);
 
         $this->assertEquals($user->id, $returnedUser->id);
@@ -331,6 +333,7 @@ class GuardTest extends TestCase
             return $request->header('X-Auth-Token');
         });
 
+        $this->withoutDefer();
         $returnedUser = $guard->__invoke($request);
 
         $this->assertEquals($user->id, $returnedUser->id);
